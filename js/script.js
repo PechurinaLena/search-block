@@ -11,10 +11,10 @@ window.onload = function() {
     openForm.style.display = "block";
   };
 
-  var link = document.querySelector(".modal-close");
+  var link = document.querySelector(".modal");
 
   var popup = document.querySelector(".modal-login");
-  var close = popup.querySelector(".modal-close");
+  var close = popup.querySelector(".date-form");
 
   var form = popup.querySelector("form");
   var date = popup.querySelector("[name=date]");
