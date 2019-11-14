@@ -6,7 +6,7 @@ window.onload = function() {
     if (openForm.style.display == "block") {
       openForm.style.display = "none";
     } else {
-      openForm.style.display = "block";
+      (openForm.style.display = "block"), openForm.classList.add("modal-show");
     }
   };
 
@@ -50,6 +50,15 @@ window.onload = function() {
     } else {
       if (isStorageSupport) {
         localStorage.setItem("date", date.value);
+      }
+    }
+  });
+
+  window.addEventListener("keydown", function(evt) {
+    if (evt.keyCode === 27) {
+      if (popup.classList.contains("modal-show")) {
+        evt.preventDefault();
+        popup.classList.remove("modal-show");
       }
     }
   });
