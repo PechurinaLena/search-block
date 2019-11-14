@@ -1,38 +1,30 @@
 window.onload = function() {
   let openForm = document.querySelector(".date-form");
   let btn = document.querySelector(".modal");
-  let anotherBtn = document.querySelector(".modal-close");
 
   btn.onclick = function() {
-    openForm.style.display = "none";
+    if (openForm.style.display == "block") {
+      openForm.style.display = "none";
+    } else {
+      openForm.style.display = "block";
+    }
   };
 
-  anotherBtn.onclick = function() {
-    openForm.style.display = "block";
-  };
+  let popup = document.querySelector(".modal-login");
+  let close = popup.querySelector(".modal-close");
 
-  var link = document.querySelector(".modal");
+  let form = popup.querySelector("form");
+  let date = popup.querySelector("[name=date]");
+  let amount = popup.querySelector("[name=amount]");
 
-  var popup = document.querySelector(".modal-login");
-  var close = popup.querySelector(".modal-close");
-
-  var form = popup.querySelector("form");
-  var date = popup.querySelector("[name=date]");
-  var amount = popup.querySelector("[name=amount]");
-
-  var isStorageSupport = true;
-  var storage = "";
+  let isStorageSupport = true;
+  let storage = "";
 
   try {
     storage = localStorage.getItem("login");
   } catch (err) {
     isStorageSupport = false;
   }
-
-  link.addEventListener("click", function(evt) {
-    evt.preventDefault();
-    popup.classList.add("modal-show");
-  });
 
   close.addEventListener("click", function(evt) {
     evt.preventDefault();
@@ -58,16 +50,6 @@ window.onload = function() {
     } else {
       if (isStorageSupport) {
         localStorage.setItem("date", date.value);
-      }
-    }
-  });
-
-  window.addEventListener("keydown", function(evt) {
-    if (evt.keyCode === 27) {
-      evt.preventDefault();
-      if (popup.classList.contains("modal-show")) {
-        popup.classList.remove("modal-show");
-        popup.classList.remove("modal-error");
       }
     }
   });
